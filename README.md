@@ -8,7 +8,7 @@ This project combines the two! It is a simple Spring application that calls an A
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 * **Git:** [https://git-scm.com/](https://git-scm.com/) (If you're cloning the repository)
 
 
-### Build the project:
+### Build the project
 ```
 ./gradlew build
 ```
