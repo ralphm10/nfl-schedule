@@ -24,6 +24,8 @@ class ScheduleService(private val webClient: WebClient) {
             .retrieve()
             .bodyToMono(ScheduleResponse::class.java)
 
-        return scheduleResponseMono.block()?.body?.schedule ?: emptyList()
+        val scheduleList = scheduleResponseMono.block()?.body?.schedule ?: emptyList()
+
+        return scheduleList.filter { game: Game -> game.gameStatus == "Scheduled" }
     }
 }
