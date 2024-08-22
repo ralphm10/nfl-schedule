@@ -6,6 +6,12 @@ I am trying to learn Kotlin.
 
 This project combines the two! It is a simple Spring application that calls an API and returns the next NFL game of the selected team. 
 
+## Work in Progress
+🚧 **This project is currently a work in progress.** 🚧  
+
+Expect frequent changes and updates.  
+Contributions and feedback are welcome!
+
 ## Getting Started
 
 These instructions will the project up and running on your local machine for development and testing purposes.
