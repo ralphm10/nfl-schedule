@@ -2,13 +2,21 @@ package com.ralph.nflschedule
 
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
+import reactor.core.publisher.Mono
 
 private const val HOST = "tank01-nfl-live-in-game-real-time-statistics-nfl.p.rapidapi.com"
 private const val PATH = "getNFLTeamSchedule"
 
 @Service
 class ScheduleService(private val webClient: WebClient) {
-    fun getSchedule(teamCode: String): List<Game> {
+    fun getNextGame(teamCode: String): Game {
+        val scheduleResponseMono = makeScheduleRequest(teamCode)
+
+        val scheduleList = scheduleResponseMono.block()?.body?.schedule ?: emptyList()
+        return scheduleList.first { game: Game -> game.gameStatus == "Scheduled" }
+    }
+
+    private fun makeScheduleRequest(teamCode: String): Mono<ScheduleResponse> {
         val scheduleResponseMono = webClient.get()
             .uri { uriBuilder ->
                 uriBuilder
@@ -23,9 +31,6 @@ class ScheduleService(private val webClient: WebClient) {
             .header("x-rapidapi-key", System.getenv("NFL_API_KEY"))
             .retrieve()
             .bodyToMono(ScheduleResponse::class.java)
-
-        val scheduleList = scheduleResponseMono.block()?.body?.schedule ?: emptyList()
-
-        return scheduleList.filter { game: Game -> game.gameStatus == "Scheduled" }
+        return scheduleResponseMono
     }
 }

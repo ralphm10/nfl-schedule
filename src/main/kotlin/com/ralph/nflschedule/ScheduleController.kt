@@ -12,8 +12,8 @@ class ScheduleController(val scheduleService: ScheduleService) {
     fun test(): String = "Test endpoint!"
 
     @GetMapping("/schedule")
-    fun getSchedule(@RequestParam("team") @Nonnull teamCode: String): List<Game>? {
-        return scheduleService.getSchedule(teamCode)
+    fun getSchedule(@RequestParam("team") @Nonnull teamCode: String): Game {
+        return scheduleService.getNextGame(teamCode)
     }
 
     @GetMapping("/teams")
