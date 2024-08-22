@@ -4,7 +4,6 @@ import jakarta.annotation.Nonnull
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import reactor.core.publisher.Mono
 
 @RestController
 class ScheduleController(val scheduleService: ScheduleService) {
@@ -13,7 +12,7 @@ class ScheduleController(val scheduleService: ScheduleService) {
     fun test(): String = "Test endpoint!"
 
     @GetMapping("/schedule")
-    fun getSchedule(@RequestParam("team") @Nonnull teamCode: String): Mono<String> {
+    fun getSchedule(@RequestParam("team") @Nonnull teamCode: String): List<Game>? {
         return scheduleService.getSchedule(teamCode)
     }
 
