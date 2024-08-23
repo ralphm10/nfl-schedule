@@ -13,8 +13,8 @@ class ScheduleService(private val webClient: WebClient) {
     fun getNextGame(teamCode: String): String {
         val scheduleResponseMono = makeScheduleRequest(teamCode)
 
-        val scheduleList = scheduleResponseMono.block()?.body?.schedule ?: emptyList()
-        val nextGame = scheduleList.first { game: Game -> game.gameStatus == "Scheduled" }
+        val scheduleList = scheduleResponseMono.block()?.schedule() ?: emptyList()
+        val nextGame = scheduleList.first { it.gameStatus == "Scheduled" }
         return formatGame(nextGame)
     }
 
@@ -22,10 +22,9 @@ class ScheduleService(private val webClient: WebClient) {
         "The next ${game.seasonType} game is ${game.away} @ ${game.home} on ${formatDate(game.gameDate)}"
 
     private fun makeScheduleRequest(teamCode: String): Mono<ScheduleResponse> {
-        val scheduleResponseMono = webClient.get()
-            .uri { uriBuilder ->
-                uriBuilder
-                    .scheme("https")
+        return webClient.get()
+            .uri {
+                it.scheme("https")
                     .host(HOST)
                     .path(PATH)
                     .queryParam("teamAbv", teamCode)
@@ -36,6 +35,5 @@ class ScheduleService(private val webClient: WebClient) {
             .header("x-rapidapi-key", System.getenv("NFL_API_KEY"))
             .retrieve()
             .bodyToMono(ScheduleResponse::class.java)
-        return scheduleResponseMono
     }
 }

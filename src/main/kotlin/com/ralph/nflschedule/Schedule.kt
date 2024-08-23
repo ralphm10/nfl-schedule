@@ -1,6 +1,8 @@
 package com.ralph.nflschedule
 
-data class ScheduleResponse(val body: Schedule?)
+data class ScheduleResponse(val body: Schedule?) {
+    fun schedule(): List<Game>? = body?.schedule
+}
 
 data class Schedule(val schedule: List<Game>?)
 
