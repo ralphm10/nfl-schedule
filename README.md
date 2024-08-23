@@ -66,5 +66,6 @@ Follow the instructions below to set the environment variable on your operating 
 ./gradlew bootRun
 ```
 2. Access the application: <br/><br/> 
-   Open your web browser and navigate to http://localhost:8080?team=<TEAM_CODE> eg. http://localhost:8080?team=ATL (for the mighty Falcons!)  
+   Open your web browser and navigate to http://localhost:8080?team=<TEAM_CODE>  
+   eg. http://localhost:8080?team=ATL (for the mighty Falcons!)  
 
