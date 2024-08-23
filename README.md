@@ -12,6 +12,13 @@ This project combines the two! It is a simple Spring application that calls an A
 Expect frequent changes and updates.  
 Contributions and feedback are welcome!
 
+## To-Do
+
+- [ ] Tests!
+- [ ] Error handling
+- [ ] An endpoint to return a map of the team codes
+- [ ] More features?
+
 ## Getting Started
 
 These instructions will the project up and running on your local machine for development and testing purposes.
@@ -58,5 +65,6 @@ Follow the instructions below to set the environment variable on your operating 
 ```
 ./gradlew bootRun
 ```
-2. Access the application: Open your web browser and navigate to http://localhost:8080 (or the port specified in your application.properties).
+2. Access the application: <br/><br/> 
+   Open your web browser and navigate to http://localhost:8080?team=<TEAM_CODE> eg. http://localhost:8080?team=ATL (for the mighty Falcons!)  
 
