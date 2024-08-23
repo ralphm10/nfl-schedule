@@ -1,8 +1,8 @@
 # NFL Schedule
 
-I like the NFL.
+I like the NFL 🏈
 
-I am trying to learn Kotlin.
+I am trying to learn Kotlin 👨🏼‍💻
 
 This project combines the two! It is a simple Spring application that calls an API and returns the next NFL game of the selected team. 
 
@@ -11,6 +11,14 @@ This project combines the two! It is a simple Spring application that calls an A
 
 Expect frequent changes and updates.  
 Contributions and feedback are welcome!
+
+## To-Do
+
+- [ ] Tests!
+- [ ] Error handling
+- [ ] Logic to get the season year (using current year won't work in Jan/Feb)
+- [ ] An endpoint to return a map of the team codes
+- [ ] More features?
 
 ## Getting Started
 
@@ -58,5 +66,7 @@ Follow the instructions below to set the environment variable on your operating 
 ```
 ./gradlew bootRun
 ```
-2. Access the application: Open your web browser and navigate to http://localhost:8080 (or the port specified in your application.properties).
+2. Access the application: <br/><br/> 
+   Open your web browser and navigate to http://localhost:8080?team=<TEAM_CODE>  
+   eg. http://localhost:8080?team=ATL (for the mighty Falcons!)  
 
