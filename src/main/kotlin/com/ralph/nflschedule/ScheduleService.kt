@@ -15,8 +15,11 @@ class ScheduleService(private val webClient: WebClient) {
 
         val scheduleList = scheduleResponseMono.block()?.body?.schedule ?: emptyList()
         val nextGame = scheduleList.first { game: Game -> game.gameStatus == "Scheduled" }
-        return "The next game is ${nextGame.away} @ ${nextGame.home} on ${nextGame.gameDate}"
+        return formatGame(nextGame)
     }
+
+    private fun formatGame(game: Game) =
+        "The next ${game.seasonType} game is ${game.away} @ ${game.home} on ${game.gameDate}"
 
     private fun makeScheduleRequest(teamCode: String): Mono<ScheduleResponse> {
         val scheduleResponseMono = webClient.get()
