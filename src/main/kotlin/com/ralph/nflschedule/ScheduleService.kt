@@ -10,11 +10,12 @@ private const val PATH = "getNFLTeamSchedule"
 
 @Service
 class ScheduleService(private val webClient: WebClient) {
-    fun getNextGame(teamCode: String): Game {
+    fun getNextGame(teamCode: String): String {
         val scheduleResponseMono = makeScheduleRequest(teamCode)
 
         val scheduleList = scheduleResponseMono.block()?.body?.schedule ?: emptyList()
-        return scheduleList.first { game: Game -> game.gameStatus == "Scheduled" }
+        val nextGame = scheduleList.first { game: Game -> game.gameStatus == "Scheduled" }
+        return "The next game is ${nextGame.away} @ ${nextGame.home} on ${nextGame.gameDate}"
     }
 
     private fun makeScheduleRequest(teamCode: String): Mono<ScheduleResponse> {
