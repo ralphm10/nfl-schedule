@@ -16,6 +16,7 @@ Contributions and feedback are welcome!
 
 - [ ] Tests!
 - [ ] Error handling
+- [ ] Logic to get the season year (using current year won't work in Jan/Feb)
 - [ ] An endpoint to return a map of the team codes
 - [ ] More features?
 
